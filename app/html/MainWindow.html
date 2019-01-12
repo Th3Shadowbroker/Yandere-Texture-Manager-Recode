@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Yandere Texture Manager</title>
+        <link rel="stylesheet" href="../css/ytm.min.css">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <script src="../js/bootstrap.bundle.min.js"></script>
+    </head>
+
+    <body class="bg-dark text-light">
+
+        <header>
+
+        </header>
+
+        <main role="main">
+            <div class="main-window">
+                <div class="table">
+                    <div class="row">
+
+                        <!-- Texture selection -->
+                        <div class="col limited-col">
+                            <select id="texture-selection" size="23" class="form-control">
+                                <!-- Will be filled through backend -->
+                            </select>
+                        </div>
+
+                        <!-- Preview, path and buttons -->
+                        <div class="col limited-col">
+                           <div class="table">
+
+                               <!-- Selection preview and placeholder  -->
+                               <div class="row">
+                                   <div class="col bg-dark">
+                                       <img id="preview-image" src="" class="preview-image bg-transparent">
+                                       <div class="preview-image-placeholder">Select a texture from the left...</div>
+                                   </div>
+                               </div>
+
+                               <!-- Path -->
+                               <div class="row bg-dark">
+                                   <span id="texture-path" class="text-truncate texture-path"></span>
+                               </div>
+
+                               <!-- Actions -->
+                               <div class="row bg-dark">
+
+                                <div class="btn-group" style="width: 100%">
+
+                                </div>
+
+                               </div>
+
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <span class="text-muted">&copy; by M4taiori | <span id="website-link" class="shell-link">m4taiori.io</span></span>
+        </footer>
+
+    </body>
+
+    <script src="../js/MainWindow.js"></script>
+
+</html>

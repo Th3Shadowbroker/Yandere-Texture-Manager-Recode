@@ -24,7 +24,7 @@ class YTMFileSystem {
     }
     static getStorageFileMap() {
         let filemap = {};
-        fs.readdirSync(YTMFileSystem.storageDirectory).filter(file => path.extname(file) === '.png').forEach(file => { filemap[file] = path.resolve(YTMFileSystem.storageDirectory + '/' + file); });
+        fs.readdirSync(YTMFileSystem.storageDirectory).filter(file => path.extname(file).toLowerCase() === '.png').forEach(file => { filemap[file] = path.resolve(YTMFileSystem.storageDirectory + '/' + file); });
         return filemap;
     }
 }

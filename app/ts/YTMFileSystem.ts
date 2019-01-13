@@ -20,7 +20,7 @@ export class YTMFileSystem
         try
         {
             if (!fs.existsSync( YTMFileSystem.startupDirectory )) fs.mkdirSync( YTMFileSystem.startupDirectory );
-            if (!fs.existsSync( YTMFileSystem.storageDirectory ))fs.mkdirSync( YTMFileSystem.storageDirectory );
+            if (!fs.existsSync( YTMFileSystem.storageDirectory )) fs.mkdirSync( YTMFileSystem.storageDirectory );
         }
         catch (ex)
         {
@@ -32,7 +32,7 @@ export class YTMFileSystem
     static getStorageFileMap() : {}
     {
         let filemap = {};
-        fs.readdirSync( YTMFileSystem.storageDirectory ).filter( file => path.extname( file ) === '.png' ).forEach
+        fs.readdirSync( YTMFileSystem.storageDirectory ).filter( file => path.extname( file ).toLowerCase() === '.png' ).forEach
         (
           file => { filemap[file] = path.resolve( YTMFileSystem.storageDirectory + '/' + file ); }
         );

@@ -8,12 +8,18 @@ function hidePreview()
 {
     let previewElement = document.getElementById('preview-image');
     previewElement.style.opacity = '0';
+
+    let previewTextElement = document.getElementById('texture-path');
+    previewTextElement.style.opacity = '0';
 }
 
 function showPreview()
 {
     let previewElement = document.getElementById('preview-image');
     previewElement.style.opacity = '1';
+
+    let previewTextElement = document.getElementById('texture-path');
+    previewTextElement.style.opacity = '1';
 }
 
 function addTexture( textureName, texturePath )
@@ -28,7 +34,7 @@ function addTexture( textureName, texturePath )
 function clearTextureList()
 {
     let textureSelectionElement = document.getElementById('texture-selection');
-    for ( let i = 0; i < textureSelectionElement.options.length; i++ ) textureSelectionElement.options[i] = null;
+    textureSelectionElement.innerHTML = '';
 }
 
 function loadPreview( texturePath )
@@ -46,6 +52,17 @@ function updateTextureList( textures )
     {
         addTexture( texture, textures[texture] );
     }
+
+    let textureSelectionElement = document.getElementById('texture-selection');
+    if ( textureSelectionElement.options.length > 0 )
+    {
+        textureSelectionElement.value = textureSelectionElement.options[0].value;
+        loadPreview(textureSelectionElement.value);
+    }
+    else
+    {
+        hidePreview();
+    }
 }
 
 //Events - Misc.
@@ -54,7 +71,9 @@ document.getElementById('preview-image').addEventListener('error', hidePreview);
 document.getElementById('texture-selection').addEventListener('change', function () { loadPreview( document.getElementById('texture-selection').value ); } );
 
 //Events - Actions
-document.getElementById('btn-refresh-textures').addEventListener('click', function(){ ipcRenderer.send('request-update-texture-list'); });
+document.getElementById('btn-add-texture').addEventListener('click', function () { ipcRenderer.send('add-texture'); });
+document.getElementById('btn-delete-texture').addEventListener('click', function () { ipcRenderer.send('request-texture-deletion', document.getElementById('texture-selection').value ) } );
+document.getElementById('btn-refresh-textures').addEventListener('click', function() { ipcRenderer.send('request-update-texture-list'); });
 
 //Listeners
 ipcRenderer.on( 'update-texture-list', function( event, item ) { updateTextureList(item); } );

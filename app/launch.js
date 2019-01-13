@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var electron_1 = require("electron");
-var YTMApplication_1 = require("./ts/YTMApplication");
-var JsonConfiguration_1 = require("./ts/JsonConfiguration");
-var path = require("path");
-var fs = require("fs");
-var YTMFileSystem_1 = require("./ts/YTMFileSystem");
-var ytmApp;
-var ytmConfig;
+const electron_1 = require("electron");
+const YTMApplication_1 = require("./ts/YTMApplication");
+const JsonConfiguration_1 = require("./ts/JsonConfiguration");
+const path = require("path");
+const fs = require("fs");
+const YTMFileSystem_1 = require("./ts/YTMFileSystem");
+let ytmApp;
+let ytmConfig;
 electron_1.app.on('ready', initialize);
 function initialize() {
     checkFileStructure();
@@ -25,7 +25,7 @@ function loadConfiguration() {
     ytmConfig.saveToOrigin();
 }
 function selectGameDirectory() {
-    var pathSelection = electron_1.dialog.showOpenDialog({
+    let pathSelection = electron_1.dialog.showOpenDialog({
         title: 'Select the Yandere Simulator directory...',
         properties: ["openDirectory"]
     });
@@ -47,3 +47,4 @@ function selectGameDirectory() {
 function createWindow() {
     ytmApp = new YTMApplication_1.YTMApplication(600, 800, ytmConfig, 'Yandere Texture Manager', __dirname + '/html/MainWindow.html', true);
 }
+//# sourceMappingURL=launch.js.map

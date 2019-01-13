@@ -2,11 +2,12 @@
 <html lang="en">
 
     <head>
+
         <meta charset="UTF-8">
         <title>Yandere Texture Manager</title>
         <link rel="stylesheet" href="../css/ytm.min.css">
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <script src="../js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+
     </head>
 
     <body class="bg-dark text-light">
@@ -47,9 +48,17 @@
                                <!-- Actions -->
                                <div class="row bg-dark">
 
-                                <div class="btn-group" style="width: 100%">
-
-                                </div>
+                                   <div id="action-button-group" class="btn-group action-button">
+                                       <button id="btn-use-texture" type="button" class="btn btn-secondary">Use this texture as...</button>
+                                       <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" style="max-width: 50px" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                       <div class="dropdown-menu">
+                                           <a id="btn-add-texture" class="dropdown-item" href="#">Add a new texture...</a>
+                                           <a id="btn-download-texture" class="dropdown-item" href="#">Download a new texture...</a>
+                                           <a id="btn-delete-texture" class="dropdown-item" href="#">Delete this texture...</a>
+                                           <div class="dropdown-divider"></div>
+                                           <a id="btn-refresh-textures" class="dropdown-item" href="#">Reload texture list...</a>
+                                       </div>
+                                   </div>
 
                                </div>
 
@@ -67,5 +76,6 @@
     </body>
 
     <script src="../js/MainWindow.js"></script>
+
 
 </html>

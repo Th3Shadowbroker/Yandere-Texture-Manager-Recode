@@ -25,6 +25,12 @@ function addTexture( textureName, texturePath )
     textureSelectionElement.appendChild(textureOptionNode);
 }
 
+function clearTextureList()
+{
+    let textureSelectionElement = document.getElementById('texture-selection');
+    for ( let i = 0; i < textureSelectionElement.options.length; i++ ) textureSelectionElement.options[i] = null;
+}
+
 function loadPreview( texturePath )
 {
     showPreview();
@@ -35,19 +41,27 @@ function loadPreview( texturePath )
 
 function updateTextureList( textures )
 {
+    clearTextureList();
     for ( let texture in textures )
     {
         addTexture( texture, textures[texture] );
     }
 }
 
-//Events
+//Events - Misc.
 document.getElementById('website-link').addEventListener('click', function() { remote.shell.openItem('https://m4taiori.io'); });
 document.getElementById('preview-image').addEventListener('error', hidePreview);
 document.getElementById('texture-selection').addEventListener('change', function () { loadPreview( document.getElementById('texture-selection').value ); } );
+
+//Events - Actions
+document.getElementById('btn-refresh-textures').addEventListener('click', function(){ ipcRenderer.send('request-update-texture-list'); });
 
 //Listeners
 ipcRenderer.on( 'update-texture-list', function( event, item ) { updateTextureList(item); } );
 
 //Autorun
 ipcRenderer.send('request-update-texture-list');
+
+//Import dependencies
+window.$ = require('jquery');
+window.Bootstrap = require('bootstrap');

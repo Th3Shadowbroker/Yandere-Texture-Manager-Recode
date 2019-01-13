@@ -1,26 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var electron_1 = require("electron");
-var path = require("path");
-var fs = require("fs");
-var YTMFileSystem = /** @class */ (function () {
-    function YTMFileSystem() {
+const electron_1 = require("electron");
+const path = require("path");
+const fs = require("fs");
+class YTMFileSystem {
+    static get startupDirectory() {
+        return path.resolve('ytm');
     }
-    Object.defineProperty(YTMFileSystem, "startupDirectory", {
-        get: function () {
-            return path.resolve('ytm');
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(YTMFileSystem, "storageDirectory", {
-        get: function () {
-            return path.resolve('ytm/storage');
-        },
-        enumerable: true,
-        configurable: true
-    });
-    YTMFileSystem.mkDirs = function () {
+    static get storageDirectory() {
+        return path.resolve('ytm/storage');
+    }
+    static mkDirs() {
         try {
             if (!fs.existsSync(YTMFileSystem.startupDirectory))
                 fs.mkdirSync(YTMFileSystem.startupDirectory);
@@ -31,12 +21,12 @@ var YTMFileSystem = /** @class */ (function () {
             electron_1.dialog.showErrorBox('An error occurred...', 'An error occurred while creating the YTM directory:\n\n' + ex.message);
             electron_1.app.exit(1);
         }
-    };
-    YTMFileSystem.getStorageFileMap = function () {
-        var filemap = {};
-        fs.readdirSync(YTMFileSystem.storageDirectory).filter(function (file) { return path.extname(file) === '.png'; }).forEach(function (file) { filemap[file] = path.resolve(YTMFileSystem.storageDirectory + '/' + file); });
+    }
+    static getStorageFileMap() {
+        let filemap = {};
+        fs.readdirSync(YTMFileSystem.storageDirectory).filter(file => path.extname(file) === '.png').forEach(file => { filemap[file] = path.resolve(YTMFileSystem.storageDirectory + '/' + file); });
         return filemap;
-    };
-    return YTMFileSystem;
-}());
+    }
+}
 exports.YTMFileSystem = YTMFileSystem;
+//# sourceMappingURL=YTMFileSystem.js.map

@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var fs = require("fs");
-var JsonConfiguration = /** @class */ (function () {
-    function JsonConfiguration(filename) {
+const fs = require("fs");
+class JsonConfiguration {
+    constructor(filename) {
         this.filename = filename;
         if (fs.existsSync(filename)) {
             this.configuration = JSON.parse(fs.readFileSync(filename).toString('utf-8'));
@@ -11,31 +11,31 @@ var JsonConfiguration = /** @class */ (function () {
             this.configuration = {};
         }
     }
-    JsonConfiguration.prototype.getConfiguration = function () {
+    getConfiguration() {
         return this.configuration;
-    };
-    JsonConfiguration.prototype.getFileName = function () {
+    }
+    getFileName() {
         return this.filename;
-    };
-    JsonConfiguration.prototype.getValue = function (name) {
+    }
+    getValue(name) {
         return this.configuration[name];
-    };
-    JsonConfiguration.prototype.setValue = function (name, value) {
+    }
+    setValue(name, value) {
         this.configuration[name] = value;
         return this;
-    };
-    JsonConfiguration.prototype.setDefaultValue = function (name, value) {
+    }
+    setDefaultValue(name, value) {
         if (!this.isSet(name))
             this.setValue(name, value);
         return this;
-    };
-    JsonConfiguration.prototype.isSet = function (name) {
+    }
+    isSet(name) {
         return this.configuration.hasOwnProperty(name);
-    };
-    JsonConfiguration.prototype.setConfiguration = function (configuration) {
+    }
+    setConfiguration(configuration) {
         this.configuration = configuration;
-    };
-    JsonConfiguration.prototype.saveToOrigin = function () {
+    }
+    saveToOrigin() {
         try {
             fs.writeFileSync(this.filename, JSON.stringify(this.configuration, null, 2));
             return true;
@@ -44,8 +44,8 @@ var JsonConfiguration = /** @class */ (function () {
             console.log('An error occurred while writing to ' + this.filename + ": " + exceptions.message);
             return false;
         }
-    };
-    JsonConfiguration.prototype.save = function (filename) {
+    }
+    save(filename) {
         try {
             this.filename = filename;
             fs.writeFileSync(filename, JSON.stringify(this.configuration, null, 2));
@@ -55,7 +55,7 @@ var JsonConfiguration = /** @class */ (function () {
             console.log('An error occurred while writing to ' + this.filename + ": " + exceptions.message);
             return false;
         }
-    };
-    return JsonConfiguration;
-}());
+    }
+}
 exports.JsonConfiguration = JsonConfiguration;
+//# sourceMappingURL=JsonConfiguration.js.map

@@ -38,6 +38,9 @@ electron_1.ipcMain.on('request-texture-deletion', function (event, item) {
         }
     }
 });
+/**
+ * Add a new texture.
+ */
 electron_1.ipcMain.on('add-texture', function (event, item) {
     console.log('Requesting file selection...');
     let ofd = electron_1.dialog.showOpenDialog({
@@ -64,5 +67,26 @@ electron_1.ipcMain.on('add-texture', function (event, item) {
         }
     });
     event.sender.send('update-texture-list', YTMFileSystem_1.YTMFileSystem.getStorageFileMap());
+});
+/**
+ * Apply texture
+ */
+electron_1.ipcMain.on('open-apply-texture-dialog', function (event, item) {
+    console.log('ApplyTextureDialog:\n\tFile name: ' + item['fileName'] + '\n\tFile path: ' + item['filePath']);
+    let applyDialog = new electron_1.BrowserWindow({
+        height: 200,
+        width: 500,
+        resizable: false,
+        maximizable: false,
+        minimizable: false,
+        autoHideMenuBar: true,
+        title: 'Apply texture...',
+        show: false
+    });
+    applyDialog.loadFile(__dirname + '/../html/ApplyTextureWindow.html');
+    applyDialog.webContents.on('did-finish-load', function () {
+        applyDialog.webContents.send('receive-file-information', item);
+    });
+    applyDialog.show();
 });
 //# sourceMappingURL=YTMEventHandlers.js.map

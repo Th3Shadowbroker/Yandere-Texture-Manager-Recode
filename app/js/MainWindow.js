@@ -1,4 +1,5 @@
 //Imports
+const {YTMApplication} = require('./../ts/YTMApplication');
 const electron = require('electron');
 const { remote, ipcRenderer } = electron;
 const path = require('path');
@@ -65,12 +66,20 @@ function updateTextureList( textures )
     }
 }
 
+function openApplyDialog()
+{
+    let textureSelectionElement = document.getElementById('texture-selection');
+    let args = {'fileName': textureSelectionElement.options[textureSelectionElement.selectedIndex].innerText, 'filePath': textureSelectionElement.value};
+    ipcRenderer.send('open-apply-texture-dialog', args);
+}
+
 //Events - Misc.
 document.getElementById('website-link').addEventListener('click', function() { remote.shell.openItem('https://m4taiori.io'); });
 document.getElementById('preview-image').addEventListener('error', hidePreview);
 document.getElementById('texture-selection').addEventListener('change', function () { loadPreview( document.getElementById('texture-selection').value ); } );
 
 //Events - Actions
+document.getElementById('btn-use-texture').addEventListener('click', function () { openApplyDialog(); } );
 document.getElementById('btn-add-texture').addEventListener('click', function () { ipcRenderer.send('add-texture'); });
 document.getElementById('btn-delete-texture').addEventListener('click', function () { ipcRenderer.send('request-texture-deletion', document.getElementById('texture-selection').value ) } );
 document.getElementById('btn-refresh-textures').addEventListener('click', function() { ipcRenderer.send('request-update-texture-list'); });

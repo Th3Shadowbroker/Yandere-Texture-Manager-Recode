@@ -1,4 +1,4 @@
-import {ipcMain, dialog} from 'electron';
+import {ipcMain, dialog, BrowserWindow} from 'electron';
 import {YTMFileSystem} from "./YTMFileSystem";
 import fs = require("fs");
 import path = require("path");
@@ -48,6 +48,9 @@ ipcMain.on('request-texture-deletion', function ( event, item )
    }
 });
 
+/**
+ * Add a new texture.
+ */
 ipcMain.on('add-texture', function (event, item)
 {
    console.log('Requesting file selection...');
@@ -90,4 +93,34 @@ ipcMain.on('add-texture', function (event, item)
    );
 
    event.sender.send('update-texture-list', YTMFileSystem.getStorageFileMap());
+});
+
+/**
+ * Apply texture
+ */
+ipcMain.on('open-apply-texture-dialog', function (event, item) {
+
+   console.log('ApplyTextureDialog:\n\tFile name: ' + item['fileName'] + '\n\tFile path: ' + item['filePath'])
+
+   let applyDialog = new BrowserWindow
+   (
+       {
+          height: 200,
+          width: 500,
+          resizable: false,
+          maximizable: false,
+          minimizable: false,
+          autoHideMenuBar: true,
+          title: 'Apply texture...',
+          show: false
+       }
+   );
+
+   applyDialog.loadFile(__dirname + '/../html/ApplyTextureWindow.html');
+
+   applyDialog.webContents.on('did-finish-load', function () {
+       applyDialog.webContents.send('receive-file-information', item);
+   });
+
+    applyDialog.show();
 });

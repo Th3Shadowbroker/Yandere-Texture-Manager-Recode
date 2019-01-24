@@ -1,12 +1,12 @@
-import {BrowserWindow, globalShortcut, ipcMain} from 'electron';
+import {BrowserWindow, globalShortcut, app} from 'electron';
 import {JsonConfiguration} from "./JsonConfiguration";
 
 export class YTMApplication
 {
 
-    private mainWindow : BrowserWindow;
+    private _mainWindow : BrowserWindow;
 
-    private configuration : JsonConfiguration
+    private _configuration : JsonConfiguration;
 
     private static _instance : YTMApplication;
 
@@ -14,9 +14,9 @@ export class YTMApplication
     {
         YTMApplication._instance = this;
 
-        this.configuration = configuration;
+        this._configuration = configuration;
 
-        this.mainWindow = new BrowserWindow
+        this._mainWindow = new BrowserWindow
         (
             {
                 height: height,
@@ -28,20 +28,22 @@ export class YTMApplication
             }
         );
 
+        this._mainWindow.on('closed', () => { app.exit(0); } );
+
         require('./YTMEventHandlers');
-        globalShortcut.register( 'ctrl+shift+d', function(){ YTMApplication.mainWindow.webContents.toggleDevTools() } );
+        globalShortcut.register( 'ctrl+shift+d', function(){ if ( BrowserWindow.getFocusedWindow() ) { BrowserWindow.getFocusedWindow().webContents.toggleDevTools(); } } );
 
-        this.mainWindow.loadFile(defaultHtml);
+        this._mainWindow.loadFile(defaultHtml);
     }
 
-    static get config() : JsonConfiguration
+    public static get config() : JsonConfiguration
     {
-        return YTMApplication._instance.configuration;
+        return YTMApplication._instance._configuration;
     }
 
-    static get mainWindow() : BrowserWindow
+    public static get mainWindow() : BrowserWindow
     {
-        return YTMApplication._instance.mainWindow;
+        return YTMApplication._instance._mainWindow;
     }
 
     static get instance() : YTMApplication

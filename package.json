@@ -5,14 +5,16 @@
   "main": "app/launch.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+	"build": "electron-packager ./ YTM --icon=icon.ico"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "devtron": "^1.4.0",
-    "electron": "^4.0.1"
+    "electron": "^4.0.1",
+    "electron-packager": "^13.0.1"
   },
   "dependencies": {
     "bootstrap": "^4.2.1",

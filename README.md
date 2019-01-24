@@ -11,6 +11,9 @@ If you want to build or edit the YTM yourself just clone this repository and exe
 ### Any questions?
 Feel free to contact me via social-media: [@m4taiori](https://twitter.com/m4taiori)
 
+### Want to buy me a coffee?
+If you want to support me you can do so through [patreon](https://www.patreon.com/m4taiori) <3
+
 ### Updates and new features
 I work on most of my projects only during my free time.
 I will not maintain them actively, so feel free to fork and create a PR or just create a

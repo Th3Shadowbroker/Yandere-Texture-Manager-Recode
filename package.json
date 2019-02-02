@@ -9,8 +9,8 @@
 	"build": "electron-packager ./ YTM --icon=icon.ico"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Th3Shadowbroker",
+  "license": "MIT",
   "devDependencies": {
     "devtron": "^1.4.0",
     "electron": "^4.0.1",

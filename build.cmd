@@ -1,5 +1,7 @@
 @echo off
 Title YTM build
+echo Translating typescript into javascript...
+call npm run-script translate
 echo Executing npm build-script...
-npm run-script build
+call npm run-script build
 pause

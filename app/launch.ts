@@ -84,7 +84,7 @@ function selectGameDirectory()
     else
     {
         dialog.showErrorBox('Invalid selection...', 'You\'ve select an invalid directory!');
-        selectGameDirectory();
+        app.exit(0);
     }
 }
 

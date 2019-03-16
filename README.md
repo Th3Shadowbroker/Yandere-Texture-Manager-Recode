@@ -1,5 +1,5 @@
 ## YTM-Yandere Texture Manager
-![travis-ci-build-status](https://travis-ci.com/Th3Shadowbroker/Yandere-Texture-Manager-Recode.svg?branch=master)
+[![travis-ci-build-status](https://travis-ci.com/Th3Shadowbroker/Yandere-Texture-Manager-Recode.svg?branch=master)](https://travis-ci.com/Th3Shadowbroker/Yandere-Texture-Manager-Recode)
 
 The YTM is a tool to manage custom textures for the yandere simulator.
 

@@ -13,10 +13,10 @@
   "author": "Th3Shadowbroker",
   "license": "MIT",
   "devDependencies": {
-    "devtron": "^1.4.0",
-    "electron": "^5.0.0",
-    "electron-packager": "^14.0.0",
-    "typescript": "^3.3.3333"
+    "devtron": "1.4.0",
+    "electron": "5.0.6",
+    "electron-packager": "14.0.1",
+    "typescript": "3.5.3"
   },
   "dependencies": {
     "bootstrap": "^4.2.1",

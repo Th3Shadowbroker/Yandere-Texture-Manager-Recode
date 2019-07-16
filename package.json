@@ -14,7 +14,7 @@
   "license": "MIT",
   "devDependencies": {
     "devtron": "1.4.0",
-    "electron": "5.0.6",
+    "electron": "5.0.7",
     "electron-packager": "14.0.1",
     "typescript": "3.5.3"
   },

@@ -19,4 +19,4 @@ If you want to support me you can do so through [patreon](https://www.patreon.co
 ### Updates and new features
 I work on most of my projects only during my free time.
 I will not maintain them actively, so feel free to fork and create a PR or just create a
-whole new YTM distribution if that's permitted by their license.
+whole new YTM distribution.

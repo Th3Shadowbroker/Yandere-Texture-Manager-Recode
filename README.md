@@ -3,6 +3,9 @@
 
 The YTM is a tool to manage custom textures for the yandere simulator.
 
+#### Download latest version
+The compiled version are available [here](https://github.com/Th3Shadowbroker/Yandere-Texture-Manager-Recode/releases)!
+
 ### Why is it written in ts/js and why is it using electron?
 I used electron because I always wanted to try something with javascript/typescript.
 So as you might know, this is my first program of this kind (ts/js using electron) so please be kind.

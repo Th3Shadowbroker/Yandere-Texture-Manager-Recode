@@ -16,7 +16,7 @@
     "devtron": "1.4.0",
     "electron": "6.0.4",
     "electron-packager": "14.0.4",
-    "typescript": "3.5.3"
+    "typescript": "3.6.2"
   },
   "dependencies": {
     "bootstrap": "^4.2.1",

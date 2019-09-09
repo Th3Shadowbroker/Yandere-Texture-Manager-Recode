@@ -1,5 +1,4 @@
 {
-  "automerge": true,
   "extends": [
     "config:base"
   ]
